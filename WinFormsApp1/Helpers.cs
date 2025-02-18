@@ -104,9 +104,10 @@ public static class FileDeleter
         }
 
         // Remove all numeric characters from the string
-        private static string RemoveNumbers(string input)
+        private static string RemoveNumbers(string input, string numbersToRemove = "0123456789")
         {
-            return Regex.Replace(input, "[0-9]", "");
+            string pattern = $"[{Regex.Escape(numbersToRemove)}]";
+            return Regex.Replace(input, pattern, "");
         }
 
         // Remove specific text from the string

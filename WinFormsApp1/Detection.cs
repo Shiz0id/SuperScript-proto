@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
+namespace SuperScript
+{
+
+}
 public class Detection
 {
     // Function to detect a running process (e.g., Minecraft.exe)
