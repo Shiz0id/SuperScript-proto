@@ -40,8 +40,8 @@
             btnRunProcess = new Button();
             txtArguments = new TextBox();
             btnShowExePath = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            btnSaveScript = new Button();
+            btnOpenScript = new Button();
             SuspendLayout();
             // 
             // ExeBut
@@ -155,31 +155,33 @@
             btnShowExePath.UseVisualStyleBackColor = true;
             btnShowExePath.Click += btnShowExePath_Click;
             // 
-            // button1
+            // btnSaveScript
             // 
-            button1.Location = new Point(588, 323);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 23);
-            button1.TabIndex = 12;
-            button1.Text = "Save Script..";
-            button1.UseVisualStyleBackColor = true;
+            btnSaveScript.Location = new Point(588, 323);
+            btnSaveScript.Name = "btnSaveScript";
+            btnSaveScript.Size = new Size(93, 23);
+            btnSaveScript.TabIndex = 12;
+            btnSaveScript.Text = "Save Script..";
+            btnSaveScript.UseVisualStyleBackColor = true;
+            btnSaveScript.Click += btnSaveScript_Click;
             // 
-            // button2
+            // btnOpenScript
             // 
-            button2.Location = new Point(588, 352);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 23);
-            button2.TabIndex = 13;
-            button2.Text = "Open Script..";
-            button2.UseVisualStyleBackColor = true;
+            btnOpenScript.Location = new Point(588, 352);
+            btnOpenScript.Name = "btnOpenScript";
+            btnOpenScript.Size = new Size(93, 23);
+            btnOpenScript.TabIndex = 13;
+            btnOpenScript.Text = "Open Script..";
+            btnOpenScript.UseVisualStyleBackColor = true;
+            btnOpenScript.Click += btnOpenScript_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1068, 789);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnOpenScript);
+            Controls.Add(btnSaveScript);
             Controls.Add(btnShowExePath);
             Controls.Add(txtArguments);
             Controls.Add(btnRunProcess);
@@ -212,7 +214,7 @@
         private Button btnRunProcess;
         private TextBox txtArguments;
         private Button btnShowExePath;
-        private Button button1;
-        private Button button2;
+        private Button btnSaveScript;
+        private Button btnOpenScript;
     }
 }

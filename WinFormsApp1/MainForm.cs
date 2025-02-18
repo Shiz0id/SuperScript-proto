@@ -56,6 +56,49 @@ namespace WinFormsApp1
         {
             // Handle the TextChanged event for the TextBox
         }
+        private void btnSaveScript_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Script Files (*.sscript;*.txt)|*.sscript;*.txt|All Files (*.*)|*.*",
+                Title = "Save Script File",
+                DefaultExt = "sscript",
+                AddExtension = true
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    File.WriteAllText(saveFileDialog.FileName, ScriptWin.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving script: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void btnOpenScript_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Script Files (*.sscript;*.txt)|*.sscript;*.txt|All Files (*.*)|*.*",
+                Title = "Open a Script File"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string scriptContent = File.ReadAllText(openFileDialog.FileName);
+                    ScriptWin.Text = scriptContent;  // Display script in the text box
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error opening script: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void btnRunProcess_Click(object sender, EventArgs e)
         {
             string exePath = ExeName.Text.Trim();  // Textbox where user selects EXE
