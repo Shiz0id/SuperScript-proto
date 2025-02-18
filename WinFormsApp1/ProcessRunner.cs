@@ -89,5 +89,35 @@ namespace SuperScript
                 return false;
             }
         }
+
+        /// <summary>
+        /// Run a process as an administrator with the specified exe path and arguments.
+        /// </summary>
+        /// <param name="exeFullPath">Full path to the exe to run.</param>
+        /// <param name="arguments">Command line arguments to pass to the exe.</param>
+        /// <returns>True if process started successfully, false otherwise.</returns>
+        public static bool RunProcessAsAdmin(string exeFullPath, string arguments)
+        {
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = exeFullPath,
+                    Arguments = arguments,
+                    Verb = "runas",  // This triggers the UAC prompt for elevation
+                    UseShellExecute = true
+                };
+
+                Process.Start(psi);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string errorMsg = "Failed to start process as admin:\n" + ex.Message;
+                Clipboard.SetText(errorMsg);  // Copies the error to clipboard
+                MessageBox.Show(errorMsg + "\n\n(The error has been copied to clipboard.)");
+                return false;
+            }
+        }
     }
 }
