@@ -135,6 +135,11 @@ namespace WinFormsApp1
             // Show the correct message based on process detection
             MessageBox.Show(isRunning ? "OK! Process is running." : "Process not found.");
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
+}
 

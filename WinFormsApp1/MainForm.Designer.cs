@@ -42,6 +42,7 @@
             btnShowExePath = new Button();
             btnSaveScript = new Button();
             btnOpenScript = new Button();
+            btnRunAs = new Button();
             SuspendLayout();
             // 
             // ExeBut
@@ -140,9 +141,9 @@
             // 
             // txtArguments
             // 
-            txtArguments.Location = new Point(695, 334);
+            txtArguments.Location = new Point(809, 297);
             txtArguments.Name = "txtArguments";
-            txtArguments.Size = new Size(100, 23);
+            txtArguments.Size = new Size(199, 23);
             txtArguments.TabIndex = 10;
             // 
             // btnShowExePath
@@ -175,11 +176,22 @@
             btnOpenScript.UseVisualStyleBackColor = true;
             btnOpenScript.Click += btnOpenScript_Click;
             // 
+            // btnRunAs
+            // 
+            btnRunAs.Location = new Point(915, 334);
+            btnRunAs.Name = "btnRunAs";
+            btnRunAs.Size = new Size(93, 23);
+            btnRunAs.TabIndex = 14;
+            btnRunAs.Text = "RunAsAdmin";
+            btnRunAs.UseVisualStyleBackColor = true;
+            btnRunAs.Click += button1_Click_1;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1068, 789);
+            Controls.Add(btnRunAs);
             Controls.Add(btnOpenScript);
             Controls.Add(btnSaveScript);
             Controls.Add(btnShowExePath);
@@ -216,5 +228,6 @@
         private Button btnShowExePath;
         private Button btnSaveScript;
         private Button btnOpenScript;
+        private Button btnRunAs;
     }
 }
