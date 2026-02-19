@@ -53,8 +53,14 @@ public static class FileDeleter
         }
     }
 }
-    public static class FileRenamer
+    public static partial class FileRenamer
     {
+        [GeneratedRegex("[a-zA-Z]")]
+        private static partial Regex LettersRegex();
+
+        [GeneratedRegex("[0-9]")]
+        private static partial Regex DigitsRegex();
+
         public static bool RenameFile(string sourcePath, string newName, string removeSpecific = "", bool removeLetters = false, bool removeNumbers = false)
         {
             try
@@ -100,14 +106,22 @@ public static class FileDeleter
         // Remove all alphabetic characters from the string
         private static string RemoveLetters(string input)
         {
-            return Regex.Replace(input, "[a-zA-Z]", "");
+            return LettersRegex().Replace(input, "");
         }
 
         // Remove all numeric characters from the string
         private static string RemoveNumbers(string input, string numbersToRemove = "0123456789")
         {
-            string pattern = $"[{Regex.Escape(numbersToRemove)}]";
-            return Regex.Replace(input, pattern, "");
+            if (numbersToRemove == "0123456789")
+            {
+                return DigitsRegex().Replace(input, "");
+            }
+            else
+            {
+                // For custom number sets, we still need dynamic pattern
+                string pattern = $"[{Regex.Escape(numbersToRemove)}]";
+                return Regex.Replace(input, pattern, "");
+            }
         }
 
         // Remove specific text from the string
