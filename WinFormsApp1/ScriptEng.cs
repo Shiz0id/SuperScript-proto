@@ -11,8 +11,20 @@ namespace SuperScript
 {
 
 }
-public class ScriptEngine
+public partial class ScriptEngine
 {
+    [GeneratedRegex(@"WHEN FILE_DETECTED\(""(.+)""\)")]
+    private static partial Regex FileDetectedRegex();
+
+    [GeneratedRegex(@"DO RUN_PROCESS\(""(.+)"",\s*""(.+)""\)")]
+    private static partial Regex RunProcessRegex();
+
+    [GeneratedRegex(@"DO MOVE_FILE\(""(.+)"",\s*""(.+)""\)")]
+    private static partial Regex MoveFileRegex();
+
+    [GeneratedRegex(@"DO DELETE_FILE\(""(.+)""\)")]
+    private static partial Regex DeleteFileRegex();
+
     private bool isRunning = true;
 
     public void RunScript(string script)
@@ -23,7 +35,7 @@ public class ScriptEngine
         {
             if (line.StartsWith("WHEN FILE_DETECTED", StringComparison.OrdinalIgnoreCase))
             {
-                Match match = Regex.Match(line, @"WHEN FILE_DETECTED\(""(.+)""\)");
+                Match match = FileDetectedRegex().Match(line);
                 if (match.Success)
                 {
                     string directory = Path.GetDirectoryName(match.Groups[1].Value);
@@ -34,7 +46,7 @@ public class ScriptEngine
             // Add more triggers here...
             else if (line.StartsWith("DO RUN_PROCESS", StringComparison.OrdinalIgnoreCase))
             {
-                Match match = Regex.Match(line, @"DO RUN_PROCESS\(""(.+)"",\s*""(.+)""\)");
+                Match match = RunProcessRegex().Match(line);
                 if (match.Success)
                 {
                     string exeFullPath = match.Groups[1].Value;
@@ -45,7 +57,7 @@ public class ScriptEngine
             // Add more commands here...
             else if (line.StartsWith("DO MOVE_FILE", StringComparison.OrdinalIgnoreCase))
             {
-                Match match = Regex.Match(line, @"DO MOVE_FILE\(""(.+)"",\s*""(.+)""\)");
+                Match match = MoveFileRegex().Match(line);
                 if (match.Success)
                 {
                     string source = match.Groups[1].Value;
@@ -55,7 +67,7 @@ public class ScriptEngine
             }
             else if (line.StartsWith("DO DELETE_FILE", StringComparison.OrdinalIgnoreCase))
             {
-                Match match = Regex.Match(line, @"DO DELETE_FILE\(""(.+)""\)");
+                Match match = DeleteFileRegex().Match(line);
                 if (match.Success)
                 {
                     string filePath = match.Groups[1].Value;
