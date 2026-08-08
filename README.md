@@ -34,7 +34,7 @@ another command.
   persistence.
 - File watchers remain active until `ScriptEngine.Stop()` is called or the process
   exits.
-- The current Windows Forms screen provides file and process helpers, including
+- The current Windows Forms UI provides file and process helpers, including
   an explicit RunAsAdmin action; script editing and the script engine are
   separate prototype components.
 

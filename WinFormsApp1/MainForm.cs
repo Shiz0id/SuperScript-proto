@@ -136,7 +136,7 @@ namespace WinFormsApp1
             MessageBox.Show(isRunning ? "OK! Process is running." : "Process not found.");
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnRunAsAdmin_Click(object sender, EventArgs e)
         {
             string arguments = txtArguments.Text.Trim();
 
