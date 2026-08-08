@@ -138,8 +138,16 @@ namespace WinFormsApp1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            string arguments = txtArguments.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(exeFullPath))
+            {
+                MessageBox.Show("Please select an executable file.");
+                return;
+            }
+
+            bool success = ProcessRunner.RunProcessAsAdmin(exeFullPath, arguments);
+            MessageBox.Show(success ? "Process started successfully!" : "Failed to start the process.");
         }
     }
 }
-
