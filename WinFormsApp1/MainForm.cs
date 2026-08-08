@@ -147,7 +147,10 @@ namespace WinFormsApp1
             }
 
             bool success = ProcessRunner.RunProcessAsAdmin(exeFullPath, arguments);
-            MessageBox.Show(success ? "Process started successfully!" : "Failed to start the process.");
+            if (success)
+            {
+                MessageBox.Show("Process started successfully!");
+            }
         }
     }
 }
