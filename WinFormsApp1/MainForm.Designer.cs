@@ -184,7 +184,7 @@
             btnRunAs.TabIndex = 14;
             btnRunAs.Text = "RunAsAdmin";
             btnRunAs.UseVisualStyleBackColor = true;
-            btnRunAs.Click += button1_Click_1;
+            btnRunAs.Click += btnRunAsAdmin_Click;
             // 
             // MainForm
             // 

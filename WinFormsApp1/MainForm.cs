@@ -136,10 +136,21 @@ namespace WinFormsApp1
             MessageBox.Show(isRunning ? "OK! Process is running." : "Process not found.");
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnRunAsAdmin_Click(object sender, EventArgs e)
         {
+            string arguments = txtArguments.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(exeFullPath))
+            {
+                MessageBox.Show("Please select an executable file.");
+                return;
+            }
+
+            bool success = ProcessRunner.RunProcessAsAdmin(exeFullPath, arguments);
+            if (success)
+            {
+                MessageBox.Show("Process started successfully!");
+            }
         }
     }
 }
-
